@@ -14,12 +14,12 @@ export const Card = ({ jobs }: { jobs: any }) => {
         key={job?.job_id} 
         className="min-h-auto flex flex-col gap-y-3 p-4 text-brand-text text-md border-1 border-gray-300 rounded-xl shadow-[0px_4px_45px_0px_#00000014]">
         <section className="flex items-center gap-x-4">
-          <div className="min-w-12 min-h-12 relative flex items-center justify-center bg-brand-green rounded-md">
+          <div className="min-w-12 min-h-12 relative flex items-center justify-center self-start bg-brand-green rounded-md">
             {job?.employer_logo ? <Image src={job?.employer_logo} alt="employer logo" fill className="bg-contain rounded-[inherit]"/> : <p className="text-xl">{companyInitials(job?.employer_name)}</p>}
           </div>
           <div>
-            <h4 className="text-xl font-medium">{job?.job_title}</h4>
-            <span className="text-lg">{job?.employer_name}</span>
+            <h4 className="text-lg font-medium">{job?.job_title}</h4>
+            <span className="text-md">{job?.employer_name}</span>
           </div>
         </section>
         <p className="line-clamp-2">

@@ -18,7 +18,7 @@ const FindJobs = () => {
   const [jobNature, setJobNature] = useState<string>("")
   const [requirement, setRequirement] = useState<string>("")
 
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/search-v2?query=${query}&country=${country}&employment_types=${employmentType}&work_from_home=${jobNature}&job_requirements=${requirement}`
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/search-v2?query=${query}&country=${country}&employment_types=${employmentType}&work_from_home=${jobNature}&job_requirements=${requirement}&num_pages=4`
   const { data: jobs, isFetching, isError, refetch } = useFetchJobs(url, query)
 
   return(
@@ -47,17 +47,17 @@ const FindJobs = () => {
       </section>
       { 
         isFetching ? <Loader /> :
-        (<div className="w-full flex flex-col">
-          <section className="flex justify-center text-5xl text-brand-orange/80 mt-10 md:mt-30">
+        (<div className="w-full flex flex-col mt-5 md:mt-30">
+          <section className="flex justify-center text-4xl text-center md:text-5xl text-brand-orange/80">
             {isError && "Error! Search could not be completed."}
           </section>
           <section className="grid gap-4 grid-rows-3 md:grid-cols-2 xl:grid-cols-3">
             {jobs && <Card jobs={jobs} />}
           </section>
-          <section className="flex justify-center text-5xl text-brand-orange/80 mt-10 md:mt-30">
+          <section className="flex justify-center text-4xl text-center md:text-5xl -mt-5 text-brand-orange/80">
             {!jobs && !isError && "Search for jobs"}
           </section>
-          <section className="flex justify-center text-5xl text-brand-orange/80 mt-10 md:mt-30">
+          <section className="flex justify-center text-4xl text-center md:text-5xl -mt-5 text-brand-orange/80">
             {jobs?.length === 0 && "No jobs found!"}
           </section>
         </div>)
