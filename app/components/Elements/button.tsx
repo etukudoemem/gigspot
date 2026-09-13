@@ -1,11 +1,11 @@
 type ButtonProps = {
   children: React.ReactNode,
   className?: string,
-  onClick?: () => void,
+  onClick?: () => any,
   disabled?: boolean
 };
 
-export const Button = ({ children, className, onClick }: ButtonProps) => {
+export const Button = ({ children, className, onClick, disabled }: ButtonProps) => {
 
   return(
     <button onClick={onClick}

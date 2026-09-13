@@ -1,13 +1,5 @@
 import { Search } from "lucide-react";
-import { Button } from "./Elements/button";
-import { SetStateAction } from "react";
-
-interface SearchInputProps {
-  query: string,
-  setQuery: React.Dispatch<SetStateAction<string>>,
-  isFetching: boolean,
-  refetch: () => Promise<any>
-}
+import { SearchInputProps } from "../utils/types";
 
 export const SearchInput = ({ query, setQuery, isFetching, refetch }: SearchInputProps) => {
   const isDisabled = query === "" ? true : false
@@ -24,7 +16,7 @@ export const SearchInput = ({ query, setQuery, isFetching, refetch }: SearchInpu
       />
       <button 
         onClick={() => refetch()}
-        disabled={isDisabled}
+        disabled={isDisabled ?? isFetching}
         className={`min-w-fit h-fit px-6 py-3 text-brand-offwhite rounded-md ${isDisabled ? "bg-gray-200" : "bg-brand-orange"}`}
       >
         {isFetching ? "Searching" : "Search jobs"}

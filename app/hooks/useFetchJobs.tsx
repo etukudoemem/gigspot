@@ -1,6 +1,6 @@
 "use client"
 
-import { fetchJobs } from "@/utils/api"
+import { fetchJobs } from "@/app/utils/api"
 import { useQuery } from "@tanstack/react-query"
 
 export const useFetchJobs = (url: string, query: string) => {

@@ -1,7 +1,7 @@
-import { Footer } from "@/components/footer";
-import { Hero } from "@/components/hero";
-import { How } from "@/components/how";
-import { Navbar } from "@/components/navbar";
+import { Footer } from "@/app/components/footer";
+import { Hero } from "@/app/components/hero";
+import { How } from "@/app/components/how";
+import { Navbar } from "@/app/components/navbar";
 
 export default function Home() {
   return (
@@ -10,10 +10,8 @@ export default function Home() {
       <section className="flex items-center h-[75vh]">
         <Hero />
       </section>
-      <section>
-        <How />
-      </section>
+      <How />
       <Footer />
     </main>
   );
-}
+};

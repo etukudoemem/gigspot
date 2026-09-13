@@ -1,6 +1,5 @@
 export const fetchJobs = async (url: string) => {
-  const response = await fetch(url, 
-    {
+  const response = await fetch(url, {
     method: "GET",
     headers: {
       "x-api-key": process.env.NEXT_PUBLIC_API_KEY ?? ""
@@ -13,4 +12,4 @@ export const fetchJobs = async (url: string) => {
   const data = result.data.jobs
   console.log(data)
   return data
-} 
+};

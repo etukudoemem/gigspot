@@ -7,18 +7,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Dispatch, SetStateAction } from "react";
-
-
-export type SelectInputProps = {
-  items: { 
-    label: string; 
-    value: string; 
-  }[],
-  filterType: string
-  setItem: Dispatch<SetStateAction<string>>
-}
+} from "@/app/components/ui/select"
+import { SelectInputProps } from "../utils/types"
 
 export const SelectInput = ({ items, filterType, setItem }: SelectInputProps) => {
 
@@ -34,7 +24,7 @@ export const SelectInput = ({ items, filterType, setItem }: SelectInputProps) =>
       <SelectContent>
         <SelectGroup>
           {items.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
+            <SelectItem key={item.value} value={item.value} className="py-2 text-sm">
               {item.label}
             </SelectItem>
           ))}
@@ -42,4 +32,4 @@ export const SelectInput = ({ items, filterType, setItem }: SelectInputProps) =>
       </SelectContent>
     </Select>
   )
-}
+};

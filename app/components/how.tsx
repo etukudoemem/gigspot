@@ -1,11 +1,10 @@
-import { Search } from "lucide-react";
 import { Bubble } from "./Elements/bubble";
-import { howCardContent } from "@/utils/constants";
+import { howCardContent } from "@/app/utils/constants";
 
 export const How = () => {
 
   return(
-    <main className="w-full min-h-120 bg-brand-pale text-center p-10 mb-20 rounded-4xl">
+    <main className="w-full min-h-auto bg-brand-pale text-center p-10 mb-20">
       <Bubble className="text-brand-orange border-brand-orange">
         Three simple steps to your next role
       </Bubble>

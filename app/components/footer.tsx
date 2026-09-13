@@ -14,7 +14,7 @@ export const Footer = () => {
           </p>
         </div>
         <div>
-          <h5 className="font-medium mb-2">
+          <h5 className="font-medium mb-2 text-brand-orange">
             For job seekers
           </h5>
           <Link href={'/find-jobs'} className="hover:text-brand-link">

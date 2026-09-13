@@ -1,32 +1,27 @@
 "use client"
 
-import { Card } from "@/components/card";
-import { Button } from "@/components/Elements/button";
-import { Filter } from "@/components/filter";
-import { JobsHeader } from "@/components/jobs-header";
-import { SearchInput } from "@/components/search-input";
-import { useFetchJobs } from "@/hooks/useFetchJobs";
+import { Card } from "@/app/components/card";
+import { Button } from "@/app/components/Elements/button";
+import { Filter } from "@/app/components/filter";
+import { JobsHeader } from "@/app/components/jobs-header";
+import { SearchInput } from "@/app/components/search-input";
+import { useFetchJobs } from "@/app/hooks/useFetchJobs";
 import { MoveLeft } from "lucide-react";
-import { Search } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { Loader } from "../components/Elements/spinner";
 
 const FindJobs = () => {
   const [query, setQuery] = useState<string>("")
   const [country, setCountry] = useState<string>("")
   const [employmentType, setEmploymentType] = useState<string>("")
-  const [workNature, setWorkNature] = useState<string>("")
-  const [datePosted, setDatePosted] = useState<string>("all")
+  const [jobNature, setJobNature] = useState<string>("")
+  const [requirement, setRequirement] = useState<string>("")
 
-  const url = `https://api.openwebninja.com/jsearch/search-v2?query=${query}&country=${country}&employment_types=${employmentType}&work_from_home=${workNature}&date_posted=${datePosted}`
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/search-v2?query=${query}&country=${country}&employment_types=${employmentType}&work_from_home=${jobNature}&job_requirements=${requirement}`
+  console.log(url)
   const { data: jobs, isFetching, isError, refetch } = useFetchJobs(url, query)
-
-  if (isError) {
-    return <section className="w-full min-h-[100vh] flex justify-center items-center px-2 md:mt-20 text-5xl text-red-500">
-        Something went wrong. Search could not be completed
-      </section>
-  }
-
+  const getting = true
   return(
     <main className="w-full min-h-[100vh] px-5 lg:px-20 py-8 bg-brand-pale">
       <Button>
@@ -45,21 +40,29 @@ const FindJobs = () => {
         setCountry={setCountry} 
         employmentType={employmentType} 
         setEmploymentType={setEmploymentType}
-        workNature={workNature}
-        setWorkNature={setWorkNature}
-        datePosted={datePosted}
-        setDatePosted={setDatePosted}
+        jobNature={jobNature}
+        setJobNature={setJobNature}
+        requirement={requirement}
+        setRequirement={setRequirement}
       />
       </section>
-      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 mt-10">
-        {jobs && <Card jobs={jobs} />}
-      </section>
-      <section className="flex justify-center md:mt-20 text-5xl text-brand-orange/30">
-        {!jobs && "Search for jobs"}
-      </section>
-      <section className="flex justify-center md:mt-20 text-5xl text-brand-orange/30">
-        {jobs?.length === 0 && "No jobs found!"}
-      </section>
+      { 
+        isFetching ? <Loader /> :
+        (<div>
+          <section className="flex justify-center md:mt-20 text-5xl text-brand-orange/80">
+          {isError && "Error! Search could not be completed."}
+        </section>
+        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 mt-10">
+          {jobs && <Card jobs={jobs} />}
+        </section>
+        <section className="flex justify-center md:mt-10 text-5xl text-brand-orange/80">
+          {!jobs && !isError && "Search for jobs"}
+        </section>
+        <section className="flex justify-center md:mt-20 text-5xl text-brand-orange/80">
+          {jobs?.length === 0 && "No jobs found!"}
+        </section>
+        </div>)
+      }
     </main>
   )
 };
