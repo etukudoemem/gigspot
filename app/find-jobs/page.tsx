@@ -47,17 +47,17 @@ const FindJobs = () => {
       </section>
       { 
         isFetching ? <Loader /> :
-        (<div className="flex justify-center text-center mt-10 md:mt-30">
-          <section className="flex justify-center text-5xl text-brand-orange/80">
+        (<div className="w-full flex flex-col">
+          <section className="flex justify-center text-5xl text-brand-orange/80 mt-10 md:mt-30">
             {isError && "Error! Search could not be completed."}
           </section>
-          <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 mt-10">
+          <section className="grid gap-4 grid-rows-3 md:grid-cols-2 xl:grid-cols-3">
             {jobs && <Card jobs={jobs} />}
           </section>
-          <section className="flex justify-center text-5xl text-brand-orange/80">
+          <section className="flex justify-center text-5xl text-brand-orange/80 mt-10 md:mt-30">
             {!jobs && !isError && "Search for jobs"}
           </section>
-          <section className="flex justify-center text-5xl text-brand-orange/80">
+          <section className="flex justify-center text-5xl text-brand-orange/80 mt-10 md:mt-30">
             {jobs?.length === 0 && "No jobs found!"}
           </section>
         </div>)

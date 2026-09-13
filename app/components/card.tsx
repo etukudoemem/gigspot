@@ -6,7 +6,7 @@ import Link from "next/link"
 export const Card = ({ jobs }: { jobs: any }) => {
 
   return(
-    <main>
+    <>
       {jobs? jobs.map((job: any) => 
       <a 
         href={job?.job_apply_link}
@@ -37,6 +37,6 @@ export const Card = ({ jobs }: { jobs: any }) => {
           {job?.job_max_salary !== null ? <span className="flex items-center gap-x-1"><BriefcaseBusiness size={15}/>${job?.job_min_salary} - ${job?.job_max_salary}</span> : null}
         </section>
       </a>) : null}
-    </main>
+      </>
   );
 };
