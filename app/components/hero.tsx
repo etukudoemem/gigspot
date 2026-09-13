@@ -47,13 +47,13 @@ export const Hero = () => {
         width={60}
         className="hidden xl:block absolute right-10 bottom-10 lg:right-60 md:top-5 bg-brand-lilac rounded-2xl rotate-30 "
       />
-      <h2 className="relative md:w-[70%] text-7xl font-medium text-center text-brand-text leading-tight">
+      <h2 className="relative md:w-[70%] text-5xl md:text-7xl font-medium text-center text-brand-text leading-tight">
         Find work <br /><span className="text-brand-orange">that fits your life</span><span className="absolute bottom-5 w-2 h-2 bg-brand-orange rounded-full"></span>
       </h2>
-      <p className="w-[70%] md:w-[35%] text-brand-text text-lg text-center mt-6">
+      <p className="w-[80%] md:w-[35%] text-brand-text text-lg text-center mt-6">
         Browse through hand-picked opportunities across design, engineering, marketing, and more. Search by role, location, and how you want to work.
       </p>
-      <Button className="w-fit px-6 py-2 text-brand-black font-medium bg-brand-orange mt-7 rounded-md shadow-[0px_4px_45px_0px_#00000014]">
+      <Button className="w-fit px-6 py-3 md:py-2 text-brand-black bg-brand-orange mt-7 rounded-md shadow-[0px_4px_45px_0px_#00000014]">
         <Link href={"/find-jobs"} className="flex items-center gap-x-2">
           <span>Get Started</span>
           <MoveUpRight size={14}/>

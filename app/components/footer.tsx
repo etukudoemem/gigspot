@@ -22,7 +22,7 @@ export const Footer = () => {
           </Link>
         </div>
       </section>
-      <section className="flex items-center mt-20">
+      <section className="flex justify-center text-xs mt-20">
         <p>&copy; 2026 gigspot Board. All rights reserved.</p>
       </section>
     </footer>
